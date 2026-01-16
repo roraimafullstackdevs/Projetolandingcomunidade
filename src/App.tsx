@@ -1,6 +1,8 @@
 import { ResponsiveWrapper } from './components/ResponsiveWrapper';
 import Desktop1280Px from './imports/Desktop1280Px';
 import LargeDesktop1920Px from './imports/LargeDesktop1920Px';
+import MobileSmall from './components/MobileSmall';
+import MobileLarge from './components/MobileLarge';
 // import { BreakpointIndicator } from './components/BreakpointIndicator';
 
 /**
@@ -10,23 +12,22 @@ import LargeDesktop1920Px from './imports/LargeDesktop1920Px';
  * ===================
  * This implementation uses a mobile-first, progressively enhanced approach:
  * 
- * 1. Mobile (< 768px): Desktop1280Px with horizontal scroll enabled
- * 2. Tablet (768px - 1023px): Desktop1280Px scaled appropriately  
- * 3. Desktop (1024px - 1919px): Desktop1280Px at native resolution
- * 4. Large Desktop (≥ 1920px): LargeDesktop1920Px at native resolution
+ * 1. Mobile Small (< 480px): MobileSmall - Optimized for small phones
+ * 2. Mobile Large (480px - 767px): MobileLarge - Optimized for larger phones
+ * 3. Tablet (768px - 1023px): Desktop1280Px scaled appropriately  
+ * 4. Desktop (1024px - 1919px): Desktop1280Px at native resolution
+ * 5. Large Desktop (≥ 1920px): LargeDesktop1920Px at native resolution
  * 
  * BREAKPOINT DETAILS:
  * ==================
  * 
- * Mobile Small (< 480px)
- *   - Figma: node-id=388-11473
- *   - Current: Using Desktop1280Px with scroll
- *   - Status: ⏳ Dedicated design pending
+ * Mobile Small (< 480px) ✅
+ *   - Component: MobileSmall
+ *   - Status: ✅ Fully implemented
  * 
- * Mobile Large (480px - 767px)
- *   - Figma: node-id=369-11452
- *   - Current: Using Desktop1280Px with scroll
- *   - Status: ⏳ Dedicated design pending
+ * Mobile Large (480px - 767px) ✅
+ *   - Component: MobileLarge
+ *   - Status: ✅ Fully implemented
  * 
  * Tablet (768px - 1023px)
  *   - Figma: node-id=321-11464
@@ -79,14 +80,22 @@ export default function App() {
       </div>
 
       {/* 
-        MOBILE (< 768px)
-        Desktop1280Px with horizontal scroll enabled
-        Allows users to pan through the full design
-        TODO: Replace with dedicated mobile designs when imported
+        MOBILE LARGE (480px - 767px)
+        Dedicated mobile design for larger phones
       */}
-      <div className="block md:hidden">
-        <ResponsiveWrapper breakpoint="mobile">
-          <Desktop1280Px />
+      <div className="hidden sm:block md:hidden">
+        <ResponsiveWrapper breakpoint="mobile-large">
+          <MobileLarge />
+        </ResponsiveWrapper>
+      </div>
+
+      {/* 
+        MOBILE SMALL (< 480px)
+        Dedicated mobile design for small phones
+      */}
+      <div className="block sm:hidden">
+        <ResponsiveWrapper breakpoint="mobile-small">
+          <MobileSmall />
         </ResponsiveWrapper>
       </div>
 
