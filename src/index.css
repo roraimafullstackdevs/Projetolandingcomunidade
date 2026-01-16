@@ -423,6 +423,10 @@
     inset: -.21% -.05%;
   }
 
+  .inset-\[-0\.21\%_-0\.07\%\] {
+    inset: -.21% -.07%;
+  }
+
   .inset-\[-6\.24\%_-180\.41\%\] {
     inset: -6.24% -180.41%;
   }
@@ -511,6 +515,10 @@
     inset: 0 66.76% 0 0;
   }
 
+  .inset-\[0_320px_0_-320px\] {
+    inset: 0 320px 0 -320px;
+  }
+
   .inset-\[13\.73\%_14\.96\%_12\.94\%_9\.65\%\] {
     inset: 13.73% 14.96% 12.94% 9.65%;
   }
@@ -549,6 +557,10 @@
 
   .right-0 {
     right: calc(var(--spacing) * 0);
+  }
+
+  .right-\[-0\.4px\] {
+    right: -.4px;
   }
 
   .bottom-0 {
@@ -623,6 +635,10 @@
     display: flex;
   }
 
+  .hidden {
+    display: none;
+  }
+
   .aspect-\[600\/600\] {
     aspect-ratio: 600 / 600;
   }
@@ -673,6 +689,14 @@
     height: 120px;
   }
 
+  .h-\[127px\] {
+    height: 127px;
+  }
+
+  .h-\[131px\] {
+    height: 131px;
+  }
+
   .h-\[149px\] {
     height: 149px;
   }
@@ -701,6 +725,10 @@
     height: 982.754px;
   }
 
+  .h-\[4501px\] {
+    height: 4501px;
+  }
+
   .h-\[4721px\] {
     height: 4721px;
   }
@@ -711,6 +739,10 @@
 
   .min-h-px {
     min-height: 1px;
+  }
+
+  .min-h-screen {
+    min-height: 100vh;
   }
 
   .w-\[33\.303px\] {
@@ -729,8 +761,16 @@
     width: 115px;
   }
 
+  .w-\[118px\] {
+    width: 118px;
+  }
+
   .w-\[180px\] {
     width: 180px;
+  }
+
+  .w-\[236px\] {
+    width: 236px;
   }
 
   .w-\[264px\] {
@@ -745,12 +785,20 @@
     width: 400px;
   }
 
+  .w-\[552px\] {
+    width: 552px;
+  }
+
   .w-\[647\.4px\] {
     width: 647.4px;
   }
 
   .w-\[750px\] {
     width: 750px;
+  }
+
+  .w-\[1280px\] {
+    width: 1280px;
   }
 
   .w-\[1920px\] {
@@ -763,6 +811,10 @@
 
   .w-full {
     width: 100%;
+  }
+
+  .w-max {
+    width: max-content;
   }
 
   .max-w-\[1200px\] {
@@ -779,6 +831,14 @@
 
   .max-w-none {
     max-width: none;
+  }
+
+  .min-w-\[375px\] {
+    min-width: 375px;
+  }
+
+  .min-w-\[768px\] {
+    min-width: 768px;
   }
 
   .min-w-full {
@@ -899,6 +959,14 @@
 
   .overflow-clip {
     overflow: clip;
+  }
+
+  .overflow-x-auto {
+    overflow-x: auto;
+  }
+
+  .overflow-y-visible {
+    overflow-y: visible;
   }
 
   .rounded-\[4px\] {
@@ -1118,6 +1186,10 @@
     padding-inline: 24px;
   }
 
+  .px-\[80px\] {
+    padding-inline: 80px;
+  }
+
   .py-0 {
     padding-block: calc(var(--spacing) * 0);
   }
@@ -1140,6 +1212,10 @@
 
   .py-\[40px\] {
     padding-block: 40px;
+  }
+
+  .py-\[80px\] {
+    padding-block: 80px;
   }
 
   .py-\[128px\] {
@@ -1301,6 +1377,72 @@
     -webkit-backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
     backdrop-filter: var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );
   }
+
+  @media (width >= 48rem) {
+    .md\:block {
+      display: block;
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:hidden {
+      display: none;
+    }
+  }
+
+  @media (width >= 64rem) {
+    .lg\:block {
+      display: block;
+    }
+  }
+
+  @media (width >= 64rem) {
+    .lg\:hidden {
+      display: none;
+    }
+  }
+
+  @media (width >= 96rem) {
+    .\32 xl\:block {
+      display: block;
+    }
+  }
+
+  @media (width >= 96rem) {
+    .\32 xl\:hidden {
+      display: none;
+    }
+  }
+
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .prevent-shift {
+    scrollbar-gutter: stable;
+  }
+
+  @media (width <= 767px) {
+    html {
+      text-size-adjust: 100%;
+    }
+  }
+
+  @media (width >= 768px) and (width <= 1023px) {
+    body {
+      font-size: 16px;
+    }
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 
@@ -1384,6 +1526,12 @@
 
 html {
   font-size: var(--font-size);
+}
+
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
 }
 
 @property --tw-translate-x {

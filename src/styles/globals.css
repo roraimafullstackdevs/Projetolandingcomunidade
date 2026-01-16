@@ -185,3 +185,50 @@
 html {
   font-size: var(--font-size);
 }
+
+/* Responsive Layout Enhancements */
+@layer utilities {
+  /* Smooth scrolling for horizontal overflow on mobile */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent layout shift on scroll */
+  .prevent-shift {
+    scrollbar-gutter: stable;
+  }
+
+  /* Mobile-optimized text rendering */
+  @media (max-width: 767px) {
+    html {
+      text-size-adjust: 100%;
+      -webkit-text-size-adjust: 100%;
+    }
+  }
+
+  /* Tablet optimizations */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    /* Ensure readable text on tablet */
+    body {
+      font-size: 16px;
+    }
+  }
+
+  /* Hide scrollbar but keep functionality for cleaner UI */
+  .hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+/* Ensure full viewport height on mobile browsers */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
