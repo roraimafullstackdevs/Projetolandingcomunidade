@@ -117,20 +117,20 @@ function Logo() {
 
 function TextContainer() {
   return (
-    <div className="content-stretch flex flex-col gap-[24px] items-center relative shrink-0 text-center w-full" data-name="Text Container">
-      <p className="bg-clip-text bg-gradient-to-r css-4hzbpn font-['Afacad:Bold',sans-serif] font-bold from-[#fafafa] leading-[1.04] min-w-full relative shrink-0 text-[72px] to-[#d4d4d8] w-[min-content]" style={{ WebkitTextFillColor: "transparent" }}>
+    <div className="content-stretch flex flex-col gap-4 sm:gap-6 lg:gap-[24px] items-center relative shrink-0 text-center w-full px-4" data-name="Text Container">
+      <p className="bg-clip-text bg-gradient-to-r css-4hzbpn font-['Afacad:Bold',sans-serif] font-bold from-[#fafafa] leading-[1.04] relative shrink-0 text-3xl sm:text-5xl lg:text-[72px] to-[#d4d4d8] max-w-full" style={{ WebkitTextFillColor: "transparent" }}>
         {`Faça parte da comunidade `}
-        <br aria-hidden="true" />
+        <br aria-hidden="true" className="hidden sm:inline" />
         RR Fullstack Devs
       </p>
-      <p className="css-4hzbpn font-['Afacad:Regular',sans-serif] font-normal leading-[1.12] relative shrink-0 text-[#a1a1aa] text-[32px] w-[750px]">Aprenda, compartilhe conhecimento e conecte-se com as principais referências em tecnologia de Roraima.</p>
+      <p className="css-4hzbpn font-['Afacad:Regular',sans-serif] font-normal leading-[1.12] relative shrink-0 text-[#a1a1aa] text-base sm:text-xl lg:text-[32px] max-w-[750px]">Aprenda, compartilhe conhecimento e conecte-se com as principais referências em tecnologia de Roraima.</p>
     </div>
   );
 }
 
 function Container() {
   return (
-    <div className="content-stretch flex flex-col gap-[48px] items-center relative shrink-0 w-full" data-name="Container">
+    <div className="content-stretch flex flex-col gap-6 sm:gap-8 lg:gap-[48px] items-center relative shrink-0 w-full" data-name="Container">
       <Logo />
       <TextContainer />
     </div>
@@ -192,7 +192,7 @@ function MainContent() {
   return (
     <div className="max-w-[1280px] relative shrink-0 w-full" data-name="Main Content">
       <div className="flex flex-col items-center max-w-[inherit] size-full">
-        <div className="content-stretch flex flex-col gap-[64px] items-center max-w-[inherit] pb-[80px] pt-0 px-[80px] relative w-full">
+        <div className="content-stretch flex flex-col gap-8 sm:gap-12 lg:gap-[64px] items-center max-w-[inherit] pb-12 sm:pb-16 lg:pb-[80px] pt-0 px-4 sm:px-8 lg:px-[80px] relative w-full">
           <Container />
           <ButtonsContainer />
         </div>
@@ -1292,26 +1292,28 @@ function Light2() {
 
 function HeroSection() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center overflow-clip pb-[80px] pt-[256px] px-0 relative shrink-0 w-full" data-name="Hero Section">
+    <div className="content-stretch flex flex-col items-center justify-center overflow-clip pb-10 sm:pb-16 lg:pb-[80px] pt-24 sm:pt-32 lg:pt-[256px] px-4 sm:px-6 relative shrink-0 w-full" data-name="Hero Section">
       <MainContent />
       <AbstractDesign />
-      <div className="absolute flex h-[780px] items-center justify-center left-[-0.4px] top-0 w-[647.4px]">
+      <div className="absolute flex h-[780px] items-center justify-center left-[-0.4px] top-0 w-[647.4px] hidden lg:flex">
         <div className="flex-none rotate-[180deg] scale-y-[-100%]">
           <Light1 />
         </div>
       </div>
-      <Light2 />
+      <div className="hidden lg:block">
+        <Light2 />
+      </div>
     </div>
   );
 }
 
 function TextContainer1() {
   return (
-    <div className="content-stretch flex flex-col gap-[24px] items-start leading-[normal] relative shrink-0 w-full" data-name="Text Container">
-      <p className="bg-clip-text bg-gradient-to-r css-4hzbpn font-['Afacad:Bold',sans-serif] font-bold from-[#fafafa] relative shrink-0 text-[40px] to-[#d4d4d8] w-full" style={{ WebkitTextFillColor: "transparent" }}>
+    <div className="content-stretch flex flex-col gap-4 sm:gap-6 lg:gap-[24px] items-start leading-[normal] relative shrink-0 w-full" data-name="Text Container">
+      <p className="bg-clip-text bg-gradient-to-r css-4hzbpn font-['Afacad:Bold',sans-serif] font-bold from-[#fafafa] relative shrink-0 text-2xl sm:text-3xl lg:text-[40px] to-[#d4d4d8] w-full" style={{ WebkitTextFillColor: "transparent" }}>
         Sobre a comunidade
       </p>
-      <p className="css-4hzbpn font-['Afacad:Regular',sans-serif] font-normal relative shrink-0 text-[#a1a1aa] text-[24px] w-full">Nossa missão é criar um espaço colaborativo onde desenvolvedores de todos os níveis possam trocar conhecimento, aprender novas tecnologias e impulsionar suas carreiras.</p>
+      <p className="css-4hzbpn font-['Afacad:Regular',sans-serif] font-normal relative shrink-0 text-[#a1a1aa] text-base sm:text-lg lg:text-[24px] w-full">Nossa missão é criar um espaço colaborativo onde desenvolvedores de todos os níveis possam trocar conhecimento, aprender novas tecnologias e impulsionar suas carreiras.</p>
     </div>
   );
 }
@@ -1591,7 +1593,7 @@ function MainContent1() {
   return (
     <div className="max-w-[1280px] relative shrink-0 w-full" data-name="Main Content">
       <div className="flex flex-col items-center max-w-[inherit] size-full">
-        <div className="content-stretch flex flex-col gap-[48px] items-center max-w-[inherit] px-[80px] py-0 relative w-full">
+        <div className="content-stretch flex flex-col gap-6 sm:gap-8 lg:gap-[48px] items-center max-w-[inherit] px-4 sm:px-8 lg:px-[80px] py-0 relative w-full">
           <TextContainer1 />
           <CardsContainer />
         </div>
@@ -1602,7 +1604,7 @@ function MainContent1() {
 
 function SobreAComunidade() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center px-0 py-[80px] relative shrink-0 w-full" data-name="Sobre a comunidade">
+    <div className="content-stretch flex flex-col items-center justify-center px-4 sm:px-6 py-12 sm:py-16 lg:py-[80px] relative shrink-0 w-full" data-name="Sobre a comunidade">
       <MainContent1 />
     </div>
   );
@@ -2281,7 +2283,7 @@ function MainContent2() {
   return (
     <div className="max-w-[1280px] relative shrink-0 w-full" data-name="Main Content">
       <div className="flex flex-col items-center max-w-[inherit] size-full">
-        <div className="content-stretch flex flex-col gap-[48px] items-center max-w-[inherit] px-[80px] py-0 relative w-full">
+        <div className="content-stretch flex flex-col gap-6 sm:gap-8 lg:gap-[48px] items-center max-w-[inherit] px-4 sm:px-8 lg:px-[80px] py-0 relative w-full">
           <TextContainer2 />
           <CardsContainer1 />
           <Button5 />
@@ -2293,7 +2295,7 @@ function MainContent2() {
 
 function Eventos() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center px-0 py-[80px] relative shrink-0 w-full" data-name="Eventos">
+    <div className="content-stretch flex flex-col items-center justify-center px-4 sm:px-6 py-12 sm:py-16 lg:py-[80px] relative shrink-0 w-full" data-name="Eventos">
       <MainContent2 />
     </div>
   );
@@ -3017,7 +3019,7 @@ function MainContent3() {
   return (
     <div className="max-w-[1280px] relative shrink-0 w-full" data-name="Main Content">
       <div className="flex flex-col items-center justify-center max-w-[inherit] size-full">
-        <div className="content-stretch flex flex-col gap-[48px] items-center justify-center max-w-[inherit] px-[80px] py-0 relative w-full">
+        <div className="content-stretch flex flex-col gap-6 sm:gap-8 lg:gap-[48px] items-center justify-center max-w-[inherit] px-4 sm:px-8 lg:px-[80px] py-0 relative w-full">
           <TextContainer3 />
           <CardsContainer2 />
           <Button10 />
@@ -3029,7 +3031,7 @@ function MainContent3() {
 
 function Desafios() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center px-0 py-[80px] relative shrink-0 w-full" data-name="Desafios">
+    <div className="content-stretch flex flex-col items-center justify-center px-4 sm:px-6 py-12 sm:py-16 lg:py-[80px] relative shrink-0 w-full" data-name="Desafios">
       <MainContent3 />
     </div>
   );
@@ -3342,7 +3344,7 @@ function MainContent4() {
   return (
     <div className="max-w-[1280px] relative shrink-0 w-full" data-name="Main Content">
       <div className="flex flex-col items-center max-w-[inherit] size-full">
-        <div className="content-stretch flex flex-col gap-[48px] items-center max-w-[inherit] px-[80px] py-0 relative w-full">
+        <div className="content-stretch flex flex-col gap-6 sm:gap-8 lg:gap-[48px] items-center max-w-[inherit] px-4 sm:px-8 lg:px-[80px] py-0 relative w-full">
           <TextContainer4 />
           <CardsContainer3 />
           <Frame1 />
@@ -3354,7 +3356,7 @@ function MainContent4() {
 
 function ProgramaDeMentoria() {
   return (
-    <div className="content-stretch flex flex-col items-center justify-center px-0 py-[80px] relative shrink-0 w-full" data-name="Programa de mentoria">
+    <div className="content-stretch flex flex-col items-center justify-center px-4 sm:px-6 py-12 sm:py-16 lg:py-[80px] relative shrink-0 w-full" data-name="Programa de mentoria">
       <MainContent4 />
     </div>
   );
@@ -3612,7 +3614,7 @@ function Button17() {
 
 function SocialButtons() {
   return (
-    <div className="content-stretch flex gap-[8px] items-center relative shrink-0" data-name="Social Buttons">
+    <div className="content-stretch flex flex-wrap gap-2 sm:gap-[8px] items-center justify-center relative shrink-0" data-name="Social Buttons">
       <Button13 />
       <Button14 />
       <Button15 />
@@ -3624,8 +3626,8 @@ function SocialButtons() {
 
 function Copyright() {
   return (
-    <div className="content-stretch flex items-center relative shrink-0" data-name="Copyright">
-      <div className="css-g0mm18 flex flex-col font-['Afacad:Regular',sans-serif] font-normal justify-center leading-[0] relative shrink-0 text-[18px] text-white">
+    <div className="content-stretch flex items-center relative shrink-0 text-center" data-name="Copyright">
+      <div className="css-g0mm18 flex flex-col font-['Afacad:Regular',sans-serif] font-normal justify-center leading-[0] relative shrink-0 text-sm sm:text-[18px] text-white">
         <p className="css-ew64yg leading-[24px]">© 2025 Roraima Fullstack Devs.</p>
       </div>
     </div>
@@ -3636,7 +3638,7 @@ function Container14() {
   return (
     <div className="flex-[1_0_0] h-full max-w-[1200px] min-h-px min-w-px relative" data-name="Container">
       <div className="flex flex-col items-center justify-center max-w-[inherit] size-full">
-        <div className="content-stretch flex flex-col gap-[16px] items-center justify-center max-w-[inherit] px-[16px] py-[40px] relative size-full">
+        <div className="content-stretch flex flex-col gap-4 sm:gap-[16px] items-center justify-center max-w-[inherit] px-4 sm:px-[16px] py-6 sm:py-[40px] relative size-full">
           <Logo1 />
           <SocialButtons />
           <Copyright />
@@ -3648,7 +3650,7 @@ function Container14() {
 
 function Footer() {
   return (
-    <div className="backdrop-blur-[20px] shrink-0 sticky top-0 w-full" data-name="Footer">
+    <div className="backdrop-blur-[20px] shrink-0 w-full" data-name="Footer">
       <div className="content-stretch flex items-center justify-center overflow-clip relative rounded-[inherit] w-full">
         <div className="flex flex-[1_0_0] flex-row items-center self-stretch">
           <Container14 />
@@ -3925,9 +3927,11 @@ function Container15() {
     <div className="backdrop-blur-[20px] bg-[rgba(1,1,9,0.4)] flex-[1_0_0] max-w-[1280px] min-h-px min-w-px relative rounded-[14px]" data-name="Container">
       <div aria-hidden="true" className="absolute border border-[#161622] border-solid inset-0 pointer-events-none rounded-[14px]" />
       <div className="flex flex-row items-center max-w-[inherit] size-full">
-        <div className="content-stretch flex items-center justify-between max-w-[inherit] pl-[32px] pr-[16px] py-[16px] relative w-full">
+        <div className="content-stretch flex flex-col sm:flex-row items-center justify-between gap-4 max-w-[inherit] px-4 sm:pl-[32px] sm:pr-[16px] py-[16px] relative w-full">
           <LogoHorizontal />
-          <MenuItens />
+          <div className="hidden lg:flex">
+            <MenuItens />
+          </div>
           <EndContent8 />
         </div>
       </div>
@@ -3937,7 +3941,7 @@ function Container15() {
 
 function Header() {
   return (
-    <div className="backdrop-blur-[20px] content-stretch flex items-center justify-between overflow-clip pointer-events-auto px-[80px] py-[32px] sticky top-0" data-name="Header">
+    <div className="backdrop-blur-[20px] content-stretch flex items-center justify-between overflow-clip pointer-events-auto px-4 sm:px-8 lg:px-[80px] py-4 lg:py-[32px] sticky top-0 z-50" data-name="Header">
       <Container15 />
     </div>
   );
