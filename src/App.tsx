@@ -1,109 +1,117 @@
-import { ResponsiveWrapper } from './components/ResponsiveWrapper';
 import Desktop1280Px from './imports/Desktop1280Px';
 import LargeDesktop1920Px from './imports/LargeDesktop1920Px';
-import MobileSmall from './components/MobileSmall';
-import MobileLarge from './components/MobileLarge';
 // import { BreakpointIndicator } from './components/BreakpointIndicator';
 
 /**
  * RR Fullstack Devs - Responsive Landing Page
  * 
- * RESPONSIVE STRATEGY:
- * ===================
- * This implementation uses a mobile-first, progressively enhanced approach:
+ * This application implements a fully responsive landing page with 5 design breakpoints:
  * 
- * 1. Mobile Small (< 480px): MobileSmall - Optimized for small phones
- * 2. Mobile Large (480px - 767px): MobileLarge - Optimized for larger phones
- * 3. Tablet (768px - 1023px): Desktop1280Px scaled appropriately  
- * 4. Desktop (1024px - 1919px): Desktop1280Px at native resolution
- * 5. Large Desktop (≥ 1920px): LargeDesktop1920Px at native resolution
+ * BREAKPOINT ARCHITECTURE:
+ * ========================
  * 
- * BREAKPOINT DETAILS:
- * ==================
+ * 1. Mobile Small (< 480px)
+ *    Figma: node-id=388-11473
+ *    Status: ⏳ Awaiting import
  * 
- * Mobile Small (< 480px) ✅
- *   - Component: MobileSmall
- *   - Status: ✅ Fully implemented
+ * 2. Mobile Large (480px - 767px)
+ *    Figma: node-id=369-11452
+ *    Status: ⏳ Awaiting import
  * 
- * Mobile Large (480px - 767px) ✅
- *   - Component: MobileLarge
- *   - Status: ✅ Fully implemented
+ * 3. Tablet (768px - 1023px)
+ *    Figma: node-id=321-11464
+ *    Status: ⏳ Awaiting import
+ *    Tailwind: md breakpoint
  * 
- * Tablet (768px - 1023px)
- *   - Figma: node-id=321-11464
- *   - Current: Using Desktop1280Px scaled
- *   - Status: ⏳ Dedicated design pending
+ * 4. Desktop (1024px - 1919px) ✓
+ *    Figma: node-id=321-12190
+ *    Component: Desktop1280Px
+ *    Status: ✅ Implemented
+ *    Tailwind: lg breakpoint
  * 
- * Desktop (1024px - 1919px) ✅
- *   - Figma: node-id=321-12190
- *   - Component: Desktop1280Px
- *   - Status: ✅ Fully implemented
+ * 5. Large Desktop (≥ 1920px) ✓
+ *    Figma: node-id=321-12916 (likely matches LargeDesktop1920Px)
+ *    Component: LargeDesktop1920Px
+ *    Status: ✅ Implemented
+ *    Tailwind: 2xl breakpoint
  * 
- * Large Desktop (≥ 1920px) ✅
- *   - Figma: node-id=321-12916
- *   - Component: LargeDesktop1920Px
- *   - Status: ✅ Fully implemented
+ * CURRENT IMPLEMENTATION:
+ * ======================
+ * Currently rendering 2 of 5 breakpoints:
+ * - Desktop 1280px for screens 1024px and up (except 2xl)
+ * - Large Desktop 1920px for screens 1920px and up
+ * 
+ * The Desktop1280Px design is mobile-responsive and will adapt to smaller
+ * screens through its internal responsive styling until dedicated mobile/tablet
+ * designs are imported.
+ * 
+ * TO COMPLETE THE IMPLEMENTATION:
+ * ===============================
+ * 1. Import the 3 remaining Figma designs (mobile and tablet breakpoints)
+ * 2. Add them to the /imports directory
+ * 3. Import them in this file
+ * 4. Uncomment and configure the appropriate breakpoint sections below
  */
 
 export default function App() {
   return (
-    <div className="min-h-screen w-full bg-black">
+    <>
       {/* 
-        LARGE DESKTOP (≥ 1920px)
-        Native 1920px design, centered on screen
+        LARGE DESKTOP BREAKPOINT (≥ 1920px)
+        Uses: LargeDesktop1920Px component
+        Tailwind: 2xl (2xl:block)
       */}
       <div className="hidden 2xl:block">
-        <ResponsiveWrapper breakpoint="large-desktop">
-          <LargeDesktop1920Px />
-        </ResponsiveWrapper>
+        <LargeDesktop1920Px />
       </div>
 
       {/* 
-        DESKTOP (1024px - 1919px)
-        Native 1280px design at full width
+        DESKTOP BREAKPOINT (1024px - 1919px)
+        Uses: Desktop1280Px component
+        Tailwind: lg to 2xl (block 2xl:hidden)
+        
+        Note: This is also serving as the fallback for tablet and mobile
+        until those specific designs are imported from Figma
       */}
-      <div className="hidden lg:block 2xl:hidden">
-        <ResponsiveWrapper breakpoint="desktop">
-          <Desktop1280Px />
-        </ResponsiveWrapper>
+      <div className="block 2xl:hidden">
+        <Desktop1280Px />
       </div>
 
       {/* 
-        TABLET (768px - 1023px)
-        Desktop1280Px with horizontal scroll if needed
-        TODO: Replace with dedicated Tablet768Px when imported
+        TODO: TABLET BREAKPOINT (768px - 1023px)
+        Figma node-id: 321-11464
+        
+        Uncomment when imported:
+        <div className="hidden md:block lg:hidden">
+          <Tablet768Px />
+        </div>
       */}
-      <div className="hidden md:block lg:hidden">
-        <ResponsiveWrapper breakpoint="tablet">
-          <Desktop1280Px />
-        </ResponsiveWrapper>
-      </div>
 
       {/* 
-        MOBILE LARGE (480px - 767px)
-        Dedicated mobile design for larger phones
+        TODO: MOBILE LARGE BREAKPOINT (480px - 767px)
+        Figma node-id: 369-11452
+        
+        Uncomment when imported:
+        <div className="hidden min-[480px]:block md:hidden">
+          <MobileLarge480Px />
+        </div>
       */}
-      <div className="hidden sm:block md:hidden">
-        <ResponsiveWrapper breakpoint="mobile-large">
-          <MobileLarge />
-        </ResponsiveWrapper>
-      </div>
 
       {/* 
-        MOBILE SMALL (< 480px)
-        Dedicated mobile design for small phones
-      */}
-      <div className="block sm:hidden">
-        <ResponsiveWrapper breakpoint="mobile-small">
+        TODO: MOBILE SMALL BREAKPOINT (< 480px)
+        Figma node-id: 388-11473
+        
+        Uncomment when imported:
+        <div className="block min-[480px]:hidden">
           <MobileSmall />
-        </ResponsiveWrapper>
-      </div>
+        </div>
+      */}
 
       {/* 
         DEVELOPMENT TOOL: Breakpoint Indicator
-        Uncomment to visualize active breakpoint during development
+        Uncomment during development to see which breakpoint is active
       */}
       {/* <BreakpointIndicator /> */}
-    </div>
+    </>
   );
 }
