@@ -1,11 +1,64 @@
+# RR Fullstack Developers
 
-  # Implement Figma Design
+Landing page oficial da comunidade RR Fullstack Developers de Roraima.
 
-  This is a code bundle for Implement Figma Design. The original project is available at https://www.figma.com/design/8QXfA4dKwyg63LGrRWHEIW/Implement-Figma-Design.
+## Sobre
 
-  ## Running the code
+Plataforma web desenvolvida para conectar desenvolvedores fullstack em Roraima, oferecendo recursos de mentoria, eventos, desafios e networking.
 
-  Run `npm i` to install the dependencies.
+## Tecnologias
 
-  Run `npm run dev` to start the development server.
-  
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- Lucide Icons
+
+## Instalação
+
+```bash
+npm install
+```
+
+## Executar localmente
+
+```bash
+npm run dev
+```
+
+O aplicativo estará disponível em `http://localhost:3000`
+
+## Build para produção
+
+```bash
+npm run build
+```
+
+## Preview da build
+
+```bash
+npm run preview
+```
+
+## Estrutura do Projeto
+
+```
+├── components/          # Componentes React
+│   ├── ui/             # Componentes de UI reutilizáveis
+│   ├── Header.tsx      # Cabeçalho/Navbar
+│   ├── Hero.tsx        # Seção hero
+│   ├── Footer.tsx      # Rodapé
+│   └── ...
+├── public/             # Arquivos estáticos
+├── App.tsx             # Componente principal
+└── index.tsx           # Ponto de entrada
+```
+
+## Contribuindo
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
+
+## Licença
+
+© 2026 RR Fullstack Developers. Todos os direitos reservados.
+
