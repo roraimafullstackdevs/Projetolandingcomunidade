@@ -17,9 +17,9 @@
 
 ## 🔗 Issue Relacionada
 
-<!-- Se houver issue relacionada, referencie aqui -->
+<!-- Se houver issue relacionada, referencie aqui. Exemplo: Closes #123 -->
 
-Closes # 
+<!-- Closes #  -->
 
 ## 🧪 Como Testar
 
