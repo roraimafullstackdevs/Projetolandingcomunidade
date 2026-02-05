@@ -1,0 +1,190 @@
+import React, { useState, useEffect } from 'react';
+import Button from '../ui/Button';
+import { Menu, X, ChevronRight } from 'lucide-react';
+
+const Header: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+
+  const navLinks = [
+    { name: 'Início', href: '#home', id: 'home' },
+    { name: 'Comunidade', href: '#community', id: 'community' },
+    { name: 'Eventos', href: '#events', id: 'events' },
+    { name: 'Desafios', href: '#challenges', id: 'challenges' },
+    { name: 'Showcase', href: '#showcase', id: 'showcase' },
+    { name: 'Mentoria', href: '#mentorship', id: 'mentorship' },
+  ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 40;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
+      setActiveSection(id);
+      setIsMobileMenuOpen(false);
+      window.history.pushState(null, '', `#${id}`);
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+
+      let current = '';
+      for (const link of navLinks) {
+        const section = document.getElementById(link.id);
+        if (section) {
+          const sectionTop = section.offsetTop;
+          if (window.scrollY >= (sectionTop - 150)) {
+            current = link.id;
+          }
+        }
+      }
+      
+      if (window.scrollY < 100) {
+        current = 'home';
+      }
+      
+      if (current) setActiveSection(current);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Bloqueia o scroll do body quando o menu mobile e aberto
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMobileMenuOpen]);
+
+  return (
+    <>
+      <header 
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+          isScrolled || isMobileMenuOpen ? 'bg-dark-900/95 backdrop-blur-lg py-3' : 'bg-transparent py-4 md:py-6'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+          {/* Secao Logo */}
+          <a 
+            href="#home" 
+            onClick={(e) => handleNavClick(e, 'home')}
+            className="flex items-center gap-3 group z-50 relative focus:outline-none"
+          >
+            <img src="/logo-horizontal.svg" alt="RR Fullstack Developers" className="h-8 md:h-10 w-auto transition-transform group-hover:scale-105" />
+          </a>
+
+          {/* Navegacao Desktop */}
+          <nav className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.id)}
+                className={`px-3 lg:px-4 py-2 text-sm transition-all rounded-md focus:outline-none ${
+                  activeSection === link.id 
+                    ? 'text-white bg-white/10 font-medium' 
+                    : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {link.name}
+              </a>
+            ))}
+          </nav>
+
+          {/* Botao CTA Desktop */}
+          <div className="hidden md:block">
+            <Button 
+              icon={ChevronRight}
+              onClick={() => {
+                const el = document.getElementById('community');
+                el?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="text-sm px-5 py-2.5"
+            >
+              Entrar na comunidade
+            </Button>
+          </div>
+
+          {/* Botao alternador menu mobile */}
+          <button 
+            className="md:hidden text-zinc-300 hover:text-white p-2 z-50 relative focus:outline-none"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+      </header>
+
+      {/* Overlay menu mobile */}
+      <div 
+        className={`fixed inset-0 z-40 bg-dark-900/95 backdrop-blur-xl md:hidden transition-all duration-500 ease-in-out ${
+          isMobileMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4'
+        }`}
+      >
+        <div className="flex flex-col h-full pt-28 pb-10 px-6 overflow-y-auto">
+          
+          <nav className="flex flex-col gap-2">
+            {navLinks.map((link, idx) => (
+              <a 
+                key={link.name} 
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.id)}
+                className={`group flex items-center justify-between py-4 border-b border-white/5 text-2xl font-medium transition-all duration-300 ${
+                   activeSection === link.id ? 'text-white pl-2 border-l-4 border-blue-600 border-b-transparent bg-white/5' : 'text-zinc-400 hover:text-white hover:pl-2'
+                }`}
+                style={{ transitionDelay: `${idx * 50}ms` }}
+              >
+                <span>{link.name}</span>
+                <ChevronRight 
+                  size={20} 
+                  className={`transition-transform duration-300 ${
+                    activeSection === link.id ? 'text-blue-500 opacity-100' : 'opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0'
+                  }`} 
+                />
+              </a>
+            ))}
+          </nav>
+
+          <div className="mt-auto pt-8 flex flex-col gap-4 animate-fade-in-up">
+            <Button 
+              className="w-full justify-center h-14 text-lg shadow-[0_0_20px_rgba(37,99,235,0.2)]" 
+              icon={ChevronRight}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                setTimeout(() => {
+                  const el = document.getElementById('community');
+                  el?.scrollIntoView({ behavior: 'smooth' });
+                }, 300);
+              }}
+            >
+              Entrar na comunidade
+            </Button>
+            
+            <p className="text-center text-zinc-500 text-xs mt-4">
+              © {new Date().getFullYear()} RR Fullstack Developers
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Header;
